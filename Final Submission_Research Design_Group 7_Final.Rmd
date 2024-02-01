@@ -1,0 +1,887 @@
+---
+title: "Examining the Effect of Reminders Frequency on Credit Card Payment Behavior"
+author:  "Cynthia Cynthia, Minghui Lai, Yinheng Wang, Zhiqing Wang, Ziyu An"
+date: "2023-12-06"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+      toc_depth: 3  
+      css: styles.css
+bibliography: citations_final_submission.bib
+---
+
+<style>
+p {
+  text-indent: 40px;
+}
+</style>
+
+
+```{css, echo=FALSE}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;
+}
+
+#TOC {
+  font-family: 'Arial', sans-serif;
+}
+body {
+  font-size: 14px; 
+}
+.extra-space {
+  margin-top: 20px;
+}
+
+.code-output {
+  color: black;
+  font-size: 13px;
+}
+```
+
+# **Part 1:  Research Proposal**
+
+## 1.Abstract 
+<p style="text-indent: 0;">
+**Minghui Lai 50%, Cynthia Cynthia 25%, Ziyu An 25%**
+</p>
+In 2022, with 82% of U.S. adults having at least one credit card, the role of these financial instruments in everyday transactions has become more pronounced than ever. Regular use and timely repayments of credit cards are not just a convenience but a strategic approach to building and maintaining credit scores. However, the flip side of this widespread adoption is the emergence of significant challenges such as late payments and defaults, which adversely affect both consumers and financial institutions. Such issues can escalate into broader economic concerns, including increased consumer financial pressure, loss of income, and operational challenges for credit card companies.
+
+Our research aims to dissect these challenges by investigating the impact of payment reminder frequency on the timeliness of credit card repayments. We recognize that while credit cards offer the convenience of deferred payments and the opportunity to build credit histories, they also pose inherent risks, including the potential for overspending and accruing high-interest debt. [@olya_jaw-dropping_2021] found that 36% of Americans who missed at least a single payment for the past five years forgot to pay their bill on time. A key factor influencing credit card use is then becoming very crucial for consumers to pay their obligations. The balance between effective reminders and the risk of notification fatigue among cardholders is delicate and demands careful exploration.
+
+The study employs a randomized control trial targeting credit card users with a history of missed payments or those with a bad/fair credit score. This approach is designed to capture a wide spectrum of consumer behaviors and responses to different frequencies and methods of payment reminders. We aim to establish whether standard reminders, as compared to a single or double reminder system, influence the likelihood of timely full payments. By incorporating variables such as payment history, and user interaction with financial technologies, the study seeks to provide a comprehensive understanding of the efficacy of different reminder strategies.
+
+We anticipate that our findings will offer valuable insights for credit card companies and financial institutions. By identifying effective reminder strategies, these entities can enhance their communication methods, leading to improved customer engagement, reduced default rates, and better financial health among consumers. This is particularly pertinent in a digital age where financial technologies are increasingly intertwined with personal finance management.
+
+Moreover, the study prioritizes ethical research practices and data security, recognizing the sensitive nature of financial data and the importance of maintaining consumer trust. Our methodology, blending quantitative data analysis with qualitative insights, aims to yield a holistic view of consumer behavior in response to payment reminders. The diverse sample of credit card users, encompassing various credit scores and histories, will ensure that the findings are broadly applicable and relevant across different consumer segments.
+
+In conclusion, this research wishes to address a critical aspect of financial management in contemporary society. By exploring how the frequency and method of credit card payment reminders impact consumer behavior, we aim to contribute significantly to the understanding of financial management and consumer behavior. Our goal is to provide actionable insights that can lead to more responsible credit card usage, enhanced financial literacy, and overall financial health in society. The study's rigorous approach, employing advanced statistical methods and a blend of quantitative and qualitative analyses, is designed to ensure that the conclusions drawn are not only data-driven and insightful but also robust and applicable to a wide range of credit card users and providers.
+
+
+## 2.Statement of the Problem 
+<p style="text-indent: 0;">
+**Yinheng Wang 50%, Zhiqing Wang 50%**
+</p>
+Credit cards have become an integral part of modern financial life, offering unparalleled convenience and flexibility. They allow for cashless transactions, making purchases seamless and often more secure than carrying cash. The evolution of digital banking and financial alerts has further enhanced the credit card experience, fostering a more proactive engagement between cardholders and financial institutions. One key aspect of this engagement is the use of notifications as timely reminders for payments due. This research aims to explore the complex relationship between the frequency of these notifications and the propensity of credit card users to make full payments on their accounts, a dynamic that has significant implications for both the financial health of consumers and the strategies of credit card issuers.
+
+The use of credit cards is widely recognized for both its advantages and potential risks. They offer the convenience of deferred payments and can help build credit history when used responsibly. However, they also carry the risk of overspending and accruing high-interest debt. The role of credit cards in influencing personal credit scores is substantial. A credit score is a numerical representation of a consumer's creditworthiness, which fluctuates based on various factors, including payment habits. Full payments on credit card balances positively influence a credit score, demonstrating financial responsibility and reliability. Conversely, missed or partial payments can significantly damage a credit score, leading to long-term financial repercussions.
+
+Traditionally, the responsibility of remembering payment deadlines rested solely on the cardholder. However, with technological advancements, financial institutions now actively assist customers through automated reminders and alerts. These notifications are intended to prompt timely payments, potentially reducing the incidence of missed payments and encouraging better financial management. However, the efficacy of these reminders is not straightforward. While frequent notifications could theoretically lead to more consistent and complete payments, thereby supporting a higher credit score, there is also the concern of notification fatigue. Overexposure to reminders might lead to cardholders becoming desensitized, ignoring these alerts, and potentially missing payments.
+
+This phenomenon of notification fatigue and its impact on consumer behavior is a crucial area of study. If excessive reminders lead to disengagement, the strategy of frequent notifications could backfire, resulting in reduced full payment rates. On the other hand, insufficient reminders might fail to prompt necessary action from cardholders. This delicate balance between effective communication and over-communication is a key aspect of customer relationship management for credit card issuers. It is essential to determine the optimal frequency of notifications that encourages responsible credit behavior without overwhelming the cardholder.
+
+Understanding the impact of notification frequency on full payment rates is vital for multiple stakeholders. For credit card issuers, it is crucial for developing effective communication strategies that foster responsible credit usage and reduce default rates. For consumers, it directly affects their financial health and creditworthiness. Therefore, this research seeks to provide insights into how frequent financial reminders influence cardholder behavior, with the aim of contributing to more effective credit card management practices and healthier financial habits among consumers.
+
+
+## 3.Literature Review 
+<p style="text-indent: 0;">
+**Ziyu An 60%, Minghui Lai 40%**
+</p>
+The prevalent issue of credit card repayment behaviors, particularly the impact of late payments and defaults, sets a crucial context for our experiment. This literature review aims to provide relevant background information, highlighting what is known about the problem we are trying to solve, previous studies, and other important context surrounding the issue.
+
+A 2021 study revealed that 35% of credit card users had missed at least one payment, leading not only to lower credit scores but also higher interest rates on revolving balances, typically between 15% to 25%. These missed payments increase financial burdens and prolong debt cycles for consumers [@olya_jaw-dropping_2021]. Moreover, a GOBankingRates November 2021 survey found that only 40% of cardholders consistently pay their credit card balance in full each month [@olya_jaw-dropping_2021], while 13% of cardholders make only the minimum payment and 26.07% pay more than the minimum but never the full balance [@lisa_44_2021]. Nearly half (46%) of those with credit card debt stated it would take them at least a year to pay it off [@schulz_2023_2023]. This highlights the ongoing issue of credit card debt and the potential for improved reminder systems to encourage better payment practices.
+
+Credit scores, a pivotal factor in financial health, are significantly affected by timely and full payments. The FICO score, for instance, is influenced by payment history to the extent of 35%, with on-time full payments being a critical component [@denicola_what_nodate]. Conversely, delinquencies and partial payments can severely damage a credit score, sometimes by as much as 100 points, especially for those with previously unblemished payment records [@frankel_best_2023].
+
+The complexity of current notification systems presents a significant barrier. For instance, a leading bank's mobile app offers over ten different alert configurations, complicating the process of setting critical payment due date reminders [@citibank_manage_nodate].  [@consumer_financial_protection_bureau_consumer_2023] supports this, showing that a substantial portion of users fail to engage with these systems, despite their benefits in avoiding late payment fees and negative credit score impacts. In fact, while 67% of Americans have good or higher credit scores, the effectiveness of reminders varies across different economic classes and races [@campbell_reducing_2022]. This variability presents an opportunity to refine reminder systems for broader impact, especially considering the challenges involved in setting up notifications.
+
+Previously, the role of moral incentives in credit card debt repayment has been highlighted in previous research. A field experiment showed that moral messages significantly influenced repayment rates, more so than direct financial incentives. For example, a text message emphasizing the consequences of delinquency resulted in a 9.8% reduction in delinquency rates [@bursztyn_moral_2019]. This suggests the profound impact of moral reasoning in financial behavior and forms a basis for our exploration into delinquency prevention. Furthermore, a 2016 study by an Australian financial institution demonstrated the long-term benefits of digital repayment reminders in reducing credit card delinquency. Although The study found that these reminders significantly increased repayment rates among individuals with high credit scores [@campbell_reducing_2022].
+
+The previous findings establish a compelling case for our research, which aims to simplify and enhance the user-friendliness of credit card payment reminder systems. We hypothesize that such an improvement could significantly increase the rate of full payments among credit card users. Our research is designed to evaluate the effectiveness of payment date reminders, hypothesizing that appropriately designed reminders could act as a nudge towards healthier financial behaviors. Ultimately, this research aims to benefit consumers and financial institutions alike by promoting responsible credit card usage and thereby improving overall financial health.
+
+## 4.Research Questions, Hypotheses, and Effects 
+<p style="text-indent: 0;">
+**Cynthia Cynthia 100%**
+</p>
+Previous research has suggested that reminders help consumers manage their debt obligations and savings [@cadena_remembering_2011]. Therefore, the research questions for this study are:
+</p>
+ 
+<p style="text-indent: 0;">
+***Question 1**:Relative to default reminder, will one time reminder before the due date increase the full payment rate of credit card holders?
+</p>
+<p style="text-indent: 0;">
+***Question 2**: Relative to default remainder, will two times reminder before the due date increase the full payment rate of credit card holders?
+</p>
+<p style="text-indent: 0;">
+The null hypotheses in this research are: 
+</p>
+<p style="text-indent: 0;">
+***H10**: Relative to default reminder, one time reminder before the due date will not increase full payment rate of credit card users (𝛍t1 = 𝛍c1).
+</p>
+<p style="text-indent: 0;">
+***H20**: Relative to default reminder, one time reminder before the due date will not increase full payment rate of credit card users (𝛍t2 = 𝛍c2).
+</p>
+
+The alternative hypotheses in this research are: 
+
+<p style="text-indent: 0;">
+***H1A**: Relative to default reminder, one time reminder before the due date will not increase full payment rate of credit card users (𝛍t1 > 𝛍c1).
+</p>
+<p style="text-indent: 0;">
+***H2A**: Relative to default reminder, one time reminder before the due date will not increase full payment rate of credit card users (𝛍t2 > 𝛍c2).
+</p>
+
+In this research, the metric of performance will be the rate of full payments. We have set a statistical significance level at 5%, aligning with conventional standards in quantitative research. This threshold will guide our interpretation of the results, distinguishing between findings that are likely due to the treatment effect and those that may be attributed to random variation. 
+
+The study hypothesizes a minimum of a 7% increase in full payment rates when comparing the control group (default reminder frequency) to the treatment group 1 (increased reminder frequency). Additionally, we also anticipate slightly higher, a minimum of 8% increase, in the full payment rates for treatment group 2 to the control group. This expectation is not arbitrary but is grounded in a previous survey conducted by GOBankingRates (2023), an institution known for its comprehensive financial data collection from over 4,000 U.S. banks and credit unions. 
+
+According to GOBankingRates’ research, approximately 36% of Americans have failed to pay their credit card bill at least once in the past five years. Considering that nearly half of the population has experienced at least one missed payment, the meaningful threshold mentioned previously (for both treatment group 1 and 2) represents a relatively conservative meaningful effect size. 
+
+The threshold took into account advantages of the reminder system on its implementation costs. Ultimately, we aim to reach a point where the heightened efficiency and increased revenue can compensate for additional investment involved in this implementation.
+
+
+## 5. Importance of the Study and Social Impact 
+<p style="text-indent: 0;">
+**Minghui Lai 100%**
+</p>
+The impact of payment reminders on credit card payment behavior is an essential area of research with many benefits for credit card companies and consumers. For example, timely reminders can help lower default rates on the payment. It is suitable for the financial health of the organizations as it ensures a steady flow of income and reduces the risks. Moreover, by encouraging timely payments, an organization can reduce the costs associated with debt collection and dealing with late payments. Meanwhile, we can collect the customers' responses on reminders and analyze their preferences and behavior. This information can be used to tailor communication strategies that increase customer engagement and loyalty. 
+
+This study is also important for our society. The first beneficiary is financial health. By promoting timely payments and responsible use of credit, the analysis can contribute to overall improvement in society's financial literacy and health. This can reduce the debt burden on individuals and households. Also, effective payment reminders can help mitigate financial stress by fostering better financial habits. 
+
+
+## 6. Research Plan 
+<p style="text-indent: 0;">
+### 6.1 Population of Interest 
+<p style="text-indent: 0;">
+**Yinheng Wang 100%**
+</p>
+The population of interest for this research is U.S. credit card users with a history of missed payments or those who currently have a bad/fair credit score as reported by recognized credit bureaus (e.g., FICO, Experian, Equifax, or TransUnion). This population is particularly vulnerable to the impacts of credit score changes and may exhibit different responses to payment reminders compared to those with good/excellent credit.
+
+
+
+
+### 6.2 Sample Selection 
+<p style="text-indent: 0;">
+**Yinheng Wang 100%**
+</p>
+The sample will be selected in collaboration with a well-established credit card company or the credit card division of a bank, ensuring direct access to customer credit score data and the record of history payment behaviors, with the prerequisite that customer consent of receiving emails, text messages or notifications in mobile apps has been obtained. Participants must meet the following criteria:
+
+* They are U.S. residents who are active credit card users.
+* They have a credit score in the range that qualifies as bad/fair (between 300 and 670 on the FICO score scale).
+* They have a recorded history of at least one missed payment on their credit report within the last 12 months. (This indicates that the customer might not have established a manner of setting reminders for payment).
+
+The selection process will stratify the population based on credit score ranges, ensuring a representative sample across the spectrum of bad/fair credit scores. Participants will be randomly and evenly assigned into three groups for the study.
+
+
+
+### 6.3 Operational Procedures 
+<p style="text-indent: 0;">
+**Ziyu An 70%, Minghui Lai 30%**
+</p>
+* Filter the qualified participants to participate in this study. The participants must meet the following conditions: turn-on the notification of either email, text or notification on mobile app; have a credit score lower than 670 or missed one payment or more in the past 12 months. The qualified participants will not be notified for this experiment to avoid potential bias.
+* Randomly and evenly assign participants into three groups. Create a unique user id at the database and label the group number of participants. 
+* Three groups of settings are:
+  * **Control Group**: Apply the default setting of payment reminders. This group serves as a baseline to measure the effect of reminders.
+  * **Treatment Group 1**: Participants will receive a single reminder 7 days before the payment due date. The message will alert them of the upcoming payment and its importance for their credit score.
+  * **Treatment Group 2**: These participants will receive two reminders: one 7 days before and another 3 days before the due date, with the same message emphasizing the payment's due date and its significance.
+* The reminder states that, "The payment for your credit card account ending with xxxx is due soon. Please make sure to pay by MM-DD-YYYY. Failure to pay on time may affect your credit score.”
+
+### 6.4 Brief Schedule 
+<p style="text-indent: 0;">
+**Ziyu An 100%**
+</p>
+<p style="text-indent: 0;">
+Below are the estimated timeline for this research:
+</p>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+# Create a data frame
+df <- data.frame(
+  Period_YYYY_MM_DD = c("2024-01-05 - 2024-01-06", "2024-01-07 - 2024-02-06", "2024-02-07 - 2024-03-06", "2024-03-07 - 2024-04-06", "2024-04-07 - 2024-04-15", "2024-04-16 - 2024-04-30"),
+  Activities = c("Select qualified participants, create a database to record participants and with unique user id. Randomly and evenly distribute participants to different control/treatment groups", "First month of experiment", "Second month of experiment", "Third month of experiment", "Data Collection and analysis", "Final Report and presentation")
+)
+
+# Create a table with borders
+kable(df, "html") %>%
+  kable_styling(full_width = F, bootstrap_options = c("striped", "hover", "condensed", "bordered"))
+```
+
+### 6.5 Data Collection 
+<p style="text-indent: 0;">
+**Ziyu An 100%**
+</p>
+In this experiment, each participant will be assigned a unique user id, and data will be collected based on user behavior after three months. For each user, if the participant paid the full amount for all three months before the due date, the user's payment status will be recorded as 1. Failure to do so will be recorded with a 0. The data point will be recorded in a csv file for future analysis. Participant’s group is recorded as 1 (i.e.control group) 2 (i.e.Treatment1) and 3 (i.e.Treatment2). Since each user is likely to have a different payment due date, the data collection process is suggested to be done after three months to avoid redundant work and updates. 
+
+A sample format is attached below: 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+# Create a data frame
+df <- data.frame(
+  user_id = c("9000001", "9000002"),
+  user_name = c("Jane Doe","John Smith"),
+  group = c(1,2),
+  payment_status = c(0,1)
+)
+
+# Create a table with borders
+kable(df, "html") %>%
+  kable_styling(full_width = F, bootstrap_options = c("striped", "hover", "condensed", "bordered"))
+```
+
+<p style="text-indent: 0;">
+### 6.6 Data Security 
+<p style="text-indent: 0;">
+**Zhiqing Wang 100%**
+</p>
+As we will be partnering with credit card companies on this research, we will not be creating new databases. Our access to the company's database necessitates stringent data security measures to ensure the confidentiality and integrity of the data. A comprehensive approach to data management and protection is integral to this process. This involves robust encryption measures for data in transit and at rest, secure storage solutions with restricted access, and regular security checks to identify and address vulnerabilities. 
+
+Access control mechanisms, following the principle of least privilege, ensure that only authorized research teams have access to sensitive data. Additionally, personally identifiable information (PII) is anonymized, using codes or pseudonyms to protect participant identities. 
+
+In addition, researchers should undergo thorough training in research ethics, data security, and confidentiality, and relevant certifications can demonstrate their commitment to compliance. This training includes understanding and complying with regulations such as the General Data Protection Regulation (GDPR) and the Health Insurance Portability and Accountability Act (HIPAA).
+
+Our partnership with the credit card company is governed by explicit agreements that cover data security and confidentiality norms. These agreements align our data handling practices with regulatory requirements and the company's internal policies. Secure communication channels are employed for all interactions between our researchers and the company, ensuring the integrity and confidentiality of data exchanges.
+
+Furthermore, we have established protocols for handling the data post-research. This includes secure disposal or return of all accessed data to the credit card company, ensuring no unauthorized use or access post-research. Our comprehensive data security framework demonstrates our commitment to protecting participant information and maintaining ethical research practices throughout the project lifecycle.
+
+
+### 6.7 Variables 
+
+<div style="margin-top: 20px;"></div>
+#### Outcomes (Dependent Variables) 
+<p style="text-indent: 0;">
+**Zhiqing Wang 50%, Cynthia Cynthia 50%** 
+</p>
+The dependent variable for this study will reflect a binary value. Binary value of 1 will represent customers who paid on time in full. 0 will represent customers who are not paying full on time.
+
+<div style="margin-top: 20px;"></div>
+#### Treatments (Independent Variables) 
+<p style="text-indent: 0;">
+**Zhiqing Wang 50%, Cynthia Cynthia 50%** 
+</p>
+In this study, we focus on the frequency of reminders as our independent variable. We have organized participants into three distinct groups to assess the effects of different reminder frequencies. The control group comprises customers who will receive the standard reminder on their payment due date, in line with the existing notification setting on their monthly billing statements. 
+The first treatment group will receive one additional reminder before the payment due date. In contrast, the second treatment group will receive two additional reminders prior to the due date. This design allows us to systematically evaluate how variations in reminder frequency influence customer payment behaviors. 
+
+<div style="margin-top: 20px;"></div>
+#### Other Variables 
+<p style="text-indent: 0;">
+**Zhiqing Wang 50%, Cynthia Cynthia 50%** 
+</p>
+Beyond the principal variable of reminder frequency, additional elements such as income levels, employment status, and age demographics could potentially influence this study's outcomes. Nevertheless, our research methodology, rooted in the randomized control trial framework, is adeptly designed to neutralize biases linked to these factors. By evenly distributing these variables among the different groups, we aim to minimize their impact, thereby fostering a more equitable and representative sample. This strategy aligns with the core principles of normal distribution, ensuring a robust and reliable analysis.
+
+
+## 7. Statistical Analysis Plan 
+<p style="text-indent: 0;">
+**Zhiqing Wang 50%, Cynthia Cynthia 50%** 
+</p>
+Our research aims to evaluate how reminder frequency influences timely credit payments among consumers, focusing on comparing the full payment rates between the control and treatment groups. The research emphasizes identifying statistically significant and meaningful differences to provide insights into the effectiveness of reminders in enhancing credit management behavior. 
+
+Before proceeding with our statistical analysis, we will perform crucial preliminary checks. This includes using Q-Q plots to visually inspect whether the residuals are normally distributed as it will indicate a good model fit. Given that our study adopts a randomized controlled trial approach, we do not foresee a requirement for separate tests to confirm the independence of our data, as the randomization process itself is expected to ensure this.
+
+The independent variable, representing different reminder frequencies, will be recorded monthly at the individual subject level. Our first hypothesis suggests that a single reminder will positively impact debt repayment rates. To test this hypothesis, we will utilize a logistic regression to investigate our first null hypothesis. 
+
+The rationale for selecting a logistic regression stems from the categorical nature of our dependent variables, where the study will measure a dummy variable whether customers are paying in time. Additionally, our independent variable is categorical based with three levels. Each level represents the different frequency of reminders applied in the study. This methodological approach aligns with the binary outcome (full or missed payments) of payment behavior and the categorical nature of the treatment groups.
+
+Likewise, our second research question explores the impact of more frequent reminders (i.e. twice) on payment rate. A logistic regression will equally be used to prove this hypothesis due to the same previous reasons. If our analysis yields p-values below the significance level (p<0.05), it will indicate substantial evidence that more frequent reminders significantly influence timely payments. 
+
+The regression for first and secondary questions will use the same database, collected at the same time. The results of both groups will be compared against the result of the control group. In the first regression, we will compare treatment 1 probability with the probability of control. Likewise comparison will also be made to the probability of  treatment 2 group. 
+We have decided to not conduct post hoc tests in this research, opting instead to directly compare each treatment group with the control group on an individual basis. This approach allows for a more focused analysis of the specific impact of each reminder frequency on payment timeliness.
+
+
+
+### 7.1 Sample Size and Statistical Power 
+<p style="text-indent: 0;">
+**Yinheng Wang 100%**
+</p>
+* **Data source**: Nearly half of Americans score between 750 and 850, in the very good to exceptional range, while less than 25% of Americans have a score between 300 and 670, the poor to fair credit score range[@noauthor_credit_nodate].
+* **Effect Size**: Anticipated at least 7% increase in full payment rates
+This value represents the minimum expected change in full payment rates due to the intervention that is considered practically significant for the study. The threshold is chosen because it is deemed to be a meaningful improvement that justifies the cost and effort of implementing payment reminders.
+* **Statistical Power**: 70%. The choice of statistical power for the sample size calculation in our study is informed by several key research design considerations:  A power of 70% is chosen, which might be lower than the conventional 80% but could be a compromise due to resource limitations.
+* **Alpha Level**: The standard significance alpha level – 0.05
+* **One-Tailed Test**: A one-tailed test is appropriate when the hypothesis predicts a specific direction of the effect. Since the study hypothesizes that reminders will increase payment rates (and not decrease them), an upper one-tailed test is used to increase the study's power to detect an effect in that direction.
+
+The sample size is calculated from below R code:
+```{r load_data,class.output='code-output'}
+# Define the expected proportions for each group
+p1 <- 0.40  # proportion of success in control group
+p2 <- 0.47  # proportion of success in treatment group
+
+# Calculate the effect size
+h <- p2 - p1  # Difference in proportions for a one-tailed test
+
+# Set the desired power and significance level
+desired_power <- 0.70
+alpha <- 0.05  # Significance level
+
+# Calculate sample size for a one-tailed test comparing proportions
+# Alternative greater is used to reflect expected increase of true effect
+library(pwr)
+power_prop <- pwr.2p.test(h = h, sig.level = alpha, power = desired_power, alternative = "greater") 
+sample_size <- power_prop$n
+
+# Multiply sample size by 3 for total sample size for three groups
+total_sample_size <- round(sample_size,-2)*3
+
+
+print(power_prop)
+print(total_sample_size)
+
+```
+Total sample for the study will be rounded to **5.700** participants to ensure equal integer to be allocated to each group.
+
+### 7.2 Possible Recommendations 
+<p style="text-indent: 0;">
+**Ziyu An 100%**
+</p>
+<p style="text-indent: 0;">
+
+**Research Question 1**: Relative to default reminder, will one time reminder before the due date increase the full payment rate of credit card holders? 
+</p>
+<p style="text-indent: 0;">
+*If the null hypothesis of H10 (i.e. relative to default reminder, credit card users with one time reminder will not increase payment rate (𝛍t1 = 𝛍c1)) is not rejected, possible recommendation could explore other method such as increasing the frequency of sending reminders.
+(𝛍t1 = 𝛍c1).
+</p>
+<p style="text-indent: 0;">
+*If the null hypothesis is rejected, the credit card company or credit card division of the bank should be encouraged to send payment reminders for users 7 days before the due date. This is an actionable strategy if the study can reflect a significant increase of cardholders’ payment rate due to this initiative.
+</p>
+<p style="text-indent: 0;">
+**Research Question 2**: Relative to default remainder, will two times reminder before the due date increase full payment rate of credit card holders? 
+</p>
+<p style="text-indent: 0;">
+*If the null hypothesis H20 (i.e. relative to default reminder, credit card users with two times reminder will not increase full payment rate (𝛍t2 = 𝛍c2)) is not rejected, possible recommendation could be to explore research study in more interactive way. Examples are a pop up window whenever login to the credit card account to avoid any user fatigue, or alternatively to use notifications with wording more related with moral value [@bursztyn_moral_2019]. 
+</p>
+<p style="text-indent: 0;">
+*If the null hypothesis is rejected, the credit card company or credit card division of the bank should be encouraged to send payment reminders for users 7 days and 3 days before the due date. This is an actionable strategy to encourage on time full payment. 
+</p>
+
+## 8. Limitations and Uncertainties 
+<p style="text-indent: 0;">
+**Cynthia Cynthia 50%, Yingheng Wang 50%**
+</p>
+With an effective methodology, this study encounters certain limitations and uncertainties that require careful result interpretation. Firstly, this study specifically focuses on individuals with a history of missed credit card payments, intentionally excluding those with high credit scores. Secondly, our research scope does not encompass the investigation of how varying times of sending notifications might impact their effectiveness of a reminder. 
+
+Our decision to narrow the focus in this manner is aimed at providing a more targeted analysis of reminder strategies for individuals who are more likely to benefit from such interventions. Moreover, the binary nature of the outcome measure (1 for on-time full payment, 0 for otherwise) oversimplifies complex payment behaviors and might not capture nuances such as partial payments or slightly delayed payments. The three-month duration of the experiment may also be insufficient to observe long-term behavioral changes in payment habits. 
+
+External factors, like economic shifts or individual changes in financial status, could influence payment behavior independently of the reminders, yet these are not accounted for in the study. These considerations suggest that the observed effects might not solely be attributed to the reminder system. Looking ahead, future research could delve into varying notification schedules and their timing, offering a deeper understanding of how these factors further influence payment behavior changes. 
+
+# **Part 2:  Simulated Studies** 
+
+
+## 9. Methodology 
+<p style="text-indent: 0;">
+**Zhiqing Wang 50%, Cynthia Cynthia 50%**
+</p> 
+The research team utilized R to run this section, simulating the potential outcome based on the intended effect sizes. Based on the sample size calculation, we aim to collect a total of 5700 who will be divided equally to each group. To examine both questions, both treatment groups will be using the same control group with comparison made individually. The probability of timely payment of 0.40 will be set as a base for the control group in all scenarios, reflecting the current state (i.e. normal reminders). Subsequently, payment behavior (binary: 1 for timely payment, 0 for late payment) is simulated using a binomial distribution.
+
+The “analyze_experiment” function in the R code is structured to evaluate the impact of treatment groups relative to a control group in a study of payment behaviors. It starts by selecting only the pertinent data from the control and the specified treatment groups. Then, it employs a logistic regression model, using the “glm” function with a binomial family and logit link, to analyze this subset of data. The key objective of this model is to investigate the association between two groups and the payment outcomes, thereby quantifying the effect of the treatment on the likelihood of making timely payments.
+
+We will run 1000 simulations to check our assumptions with an alpha level of 0.05. For each research question, the simulation will cover two parts: no effect between control and treatment groups and with effect between the control and treatment groups. 
+
+
+```{r,class.output='code-output'}
+#Load Libraries
+library(data.table)
+
+# Set seed for reproducibility
+# Define parameters for simulation
+set.seed(329)
+n <- 5700 #Total Sample Size
+alpha <- 0.05
+
+#Logistic regression function for Research Question 1 and 2
+analyze_experiment <- function(data, control_group, treatment_group) {
+  # Subset data for the analysis
+  subset_data <- data[Group %in% c(control_group, treatment_group)]
+  
+  # Fit logistic regression model
+  model <- glm(Payment ~ Group, family = binomial(link = "logit"), data = subset_data)
+  
+  # Extract model summary
+  summary_model <- summary(model)
+  
+  # Extract coefficients and construct the result
+  coef_summary <- coef(summary_model)
+  effect_size <- coef_summary[paste0("Group", treatment_group), "Estimate"]
+  
+  result <- data.table(
+    Treatment_Group = treatment_group,
+    Estimate = effect_size,
+    Std_Error = coef_summary[paste0("Group", treatment_group), "Std. Error"],
+    Z_Value = coef_summary[paste0("Group", treatment_group), "z value"],
+    P_Value = ifelse(coef_summary[paste0("Group", treatment_group), "Estimate"] > 0, 
+                     coef_summary[paste0("Group", treatment_group), "Pr(>|z|)"] / 2, 
+                     1 - coef_summary[paste0("Group", treatment_group), "Pr(>|z|)"] / 2))
+  
+  return(result)
+}
+
+# Creating final results table
+results_table <- data.table('Research Question' = c(1, 1, 2, 2), Scenario = c('No Effect', 'Effect = 0.07', 'No Effect', 'Effect = 0.08'), 'Mean Effect' = c(0, 0, 0, 0),'95% Lower Bound' = c(0, 0, 0, 0),'95% Upper Bound' = c(0, 0, 0, 0),'False Positive %' = c(0, 0, 0, 0),'True Negative %' = c(0, 0, 0, 0),'False Negative %' = c(0, 0, 0, 0),'True Positive %' = c(0, 0, 0, 0))
+
+```
+
+
+
+## 10. Research Question 1
+
+This section explores two scenarios: Scenario 1, which simulates the absence of any effect from a one-time reminder on credit card payment rates; and Scenario 2, assessing the presence of a significant effect.
+
+### 10.1 Scenario 1
+<p style="text-indent: 0;">
+**Zhiqing Wang 100%**
+</p>
+<p style="text-indent: 0;">
+**First Null Hypothesis **: Relative to default reminder, one time reminder before the due date will not increase full payment rate of credit card users (𝛍t1 = 𝛍c1).
+</p>
+<p style="text-indent: 0;">
+**Simulation**
+</p>
+```{r q1_scenario1_simulation,class.output='code-output'}
+# Research Q1 T1 with no effect
+# Set seed for reproducibility
+set.seed(329)
+
+# Define parameters
+
+prob_control <- 0.40 
+prob_treatment1 <- 0.40 # Should be = to prob_control since no effect
+prob_treatment2 <- 0.40 # Should be = to prob_control since no effect
+
+# Defining group names as variables
+Treatment1 <- "Treatment1"
+Control <- "Control"
+Treatment2 <- "Treatment2"
+
+# Creating a data table for all groups, but only Control and Treatment1 are used in analysis
+dat1 <- data.table(Group = c(rep.int(x = Treatment1, times = n/3), 
+                            rep.int(x = Control, times = n/3),
+                            rep.int(x = Treatment2, times = n/3)))
+
+# Assuming binary outcome: 1 for timely payment, 0 for late payment
+dat1[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]    
+dat1[Group == Treatment1, Payment := rbinom(n = .N, size = 1, prob = prob_treatment1)]  
+
+
+# Set seed for reproducibility
+# Define parameters for simulation
+set.seed(329)
+n <- n
+B <- 1000
+
+# Creating the simulation data
+Experiment <- 1:B
+Group <- c(rep.int(Control, n/3), rep.int(Treatment1, n/3))
+sim.dat_s1 <- as.data.table(expand.grid(Experiment = Experiment, Group = Group))
+setorderv(x = sim.dat_s1, cols = c("Experiment", "Group"), order = c(1,1))
+
+# Assuming binary outcomes with specified probabilities
+sim.dat_s1[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]
+sim.dat_s1[Group == Treatment1, Payment := rbinom(n = .N, size = 1, prob = prob_treatment1)]
+
+# Function to perform logistic regression analysis for T1
+analyze.experiment <- function(the.dat) {
+  model <- glm(Payment ~ Group, family = binomial(link = "logit"), data = the.dat)
+  summary_model <- summary(model)
+  coef_treatment1 <- coef(summary_model)["GroupTreatment1", ]
+  
+  result <- data.table(
+    Estimate_Treatment1 = coef_treatment1["Estimate"],
+    P_Value_Treatment1 = ifelse(coef_treatment1["Estimate"] > 0, 
+                                coef_treatment1["Pr(>|z|)"] / 2, 
+                                1 - coef_treatment1["Pr(>|z|)"] / 2))
+  
+  return(result)
+}
+
+
+
+```
+<p style="text-indent: 0;">
+**Analysis**
+</p>
+In Scenario 1, we analyzed no effect of one-time frequency reminder on payment rate. We set the probability of on-time payment for the treatment group 1 at 40% (i.e. same with control group). In the simulation results for Research Question 1 of no treatment effect, the estimated effect size of 0.052 from one experiment indicates a small, potentially insignificant positive effect. The p-value (0.358) is much higher than 0.05, indicating that there is no statistically significant difference between Treatment1 and the control group. 
+
+The 95% confidence interval, with its lower bound at 0.001 and the upper limit extending to infinity, points to a statistically significant effect. This finding fails to reject the first null hypothesis that posited no treatment effect. The occurrence of false positives stands at 5.2%, very close to the standard alpha threshold of 5%. On the other hand, the 94.8% rate of true negatives reinforces the notion that most simulations are in harmony with the presupposed lack of true effect, highlighting the general dependability of the simulation's approach.
+
+```{r q1_scenario1_analysis,class.output='code-output'}
+# Analyze data for Research Question 1 (Treatment1 vs Control)
+results_q1_s1 <- analyze_experiment(dat1, Control, Treatment1)
+
+# Applying the analysis function to each experiment
+exp.results_t1_s1 <- sim.dat_s1[, analyze.experiment(.SD), by = "Experiment"]
+
+# Calculating statistical power for Treatment1
+power_t1_s1 <- mean(exp.results_t1_s1$P_Value_Treatment1 < 0.05, na.rm = TRUE)
+
+# Calculating Effect Size Statistics for Treatment1
+summary_stats_t1_s1 <- exp.results_t1_s1[, .(
+  Min = min(Estimate_Treatment1, na.rm = TRUE),
+  '1st_Qu' = quantile(Estimate_Treatment1, probs = 0.25, na.rm = TRUE),
+  Median = median(Estimate_Treatment1, na.rm = TRUE),
+  Mean = mean(Estimate_Treatment1, na.rm = TRUE),
+  '3rd_Qu' = quantile(Estimate_Treatment1, probs = 0.75, na.rm = TRUE),
+  Max = max(Estimate_Treatment1, na.rm = TRUE)
+)]
+
+# Concatenate the statistics into a single string
+stats_table_t1_s1 <- data.table(Statistic = c('min','1st_Quartile','Median','3rd_Quartile','Mean','Max'), Value = c(summary_stats_t1_s1$Min, summary_stats_t1_s1$`1st_Qu`, summary_stats_t1_s1$Median, summary_stats_t1_s1$Mean, summary_stats_t1_s1$`3rd_Qu`, summary_stats_t1_s1$Max))
+
+
+# Calculating 95% confidence interval for the effect size of Treatment1
+mean_effect_size_t1_s1 <- mean(exp.results_t1_s1$Estimate_Treatment1, na.rm = TRUE)
+se_effect_size_t1_s1 <- sd(exp.results_t1_s1$Estimate_Treatment1, na.rm = TRUE) / sqrt(nrow(exp.results_t1_s1))
+ci_lower_one_sided_t1_s1 <- mean_effect_size_t1_s1 - qt(0.95, df = nrow(exp.results_t1_s1) - 1) * se_effect_size_t1_s1
+ci_95_one_sided_t1_s1 <- c(Lower = ci_lower_one_sided_t1_s1, Upper = Inf)
+
+# Update final result table
+
+results_table[1,3] <- signif(stats_table_t1_s1[5,2], digits=3) # Mean Effect
+results_table[1,4] <- signif(ci_95_one_sided_t1_s1['Lower'], digits=3) #Confidence Interval
+results_table[1,5] <- Inf
+results_table[1,6] <- signif(exp.results_t1_s1[, mean(P_Value_Treatment1 < alpha)], digits = 3)*100 # False Positive
+results_table[1,7] <- signif(x=100-results_table[1,6], digits=3) # True Negative
+results_table[1,8] <- NA
+results_table[1,9] <- NA
+results_table[1,]
+
+```
+
+
+### 10.2 Scenario 2
+<p style="text-indent: 0;">
+**Yinheng 100%**
+</p>
+<p style="text-indent: 0;">
+**First Alternative Hypothesis**: Relative to default reminder, one time reminder before the due date will increase full payment rate of credit card users (𝛍t1 > 𝛍c1).
+</p>
+<p style="text-indent: 0;">
+**Simulation**
+</p>
+```{r q1_scenario2_simulation,class.output='code-output'}
+# Research Q1 T1 with effect
+# Set seed for reproducibility
+set.seed(329)
+
+# Define parameters
+prob_control <- 0.40 
+prob_treatment1 <- 0.47 # with an expected size of 7%
+prob_treatment2 <- 0.48 # with an expected size of 8%
+
+# Creating a data table for all groups, but only Control and Treatment1 are used in analysis
+dat2 <- data.table(Group = c(rep.int(x = Treatment1, times = n/3), 
+                            rep.int(x = Control, times = n/3),
+                            rep.int(x = Treatment2, times = n/3)))
+
+# Assuming binary outcome: 1 for timely payment, 0 for late payment
+dat2[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]    # 40% probability in control
+dat2[Group == Treatment1, Payment := rbinom(n = .N, size = 1, prob = prob_treatment1)]  # 47% probability in treatment1
+
+# Set seed for reproducibility
+# Define parameters for simulation
+set.seed(329)
+n <- n
+B <- 1000
+
+# Creating the simulation data
+Experiment <- 1:B
+Group <- c(rep.int(Control, n/3), rep.int(Treatment1, n/3))
+sim.dat_t1_s2 <- as.data.table(expand.grid(Experiment = Experiment, Group = Group))
+setorderv(x = sim.dat_t1_s2, cols = c("Experiment", "Group"), order = c(1,1))
+
+# Assuming binary outcomes with specified probabilities
+sim.dat_t1_s2[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]
+sim.dat_t1_s2[Group == Treatment1, Payment := rbinom(n = .N, size = 1, prob = prob_treatment1)]
+
+# Function to perform logistic regression analysis for T1
+analyze.experiment <- function(the.dat) {
+  model <- glm(Payment ~ Group, family = binomial(link = "logit"), data = the.dat)
+  summary_model <- summary(model)
+  coef_treatment1 <- coef(summary_model)["GroupTreatment1", ]
+  
+  result <- data.table(
+    Estimate_Treatment1 = coef_treatment1["Estimate"],
+    P_Value_Treatment1 = ifelse(coef_treatment1["Estimate"] > 0, 
+                                coef_treatment1["Pr(>|z|)"] / 2, 
+                                1 - coef_treatment1["Pr(>|z|)"] / 2))
+  
+  return(result)
+}
+
+```
+<p style="text-indent: 0;">
+**Analysis**
+</p>
+In this adjusted scenario with actual effect of one-time frequency reminder on payment rate, we set the probability of the treatment group 1 at 47% for, simulating the intended effect size threshold as explained previously. The analyze_experiment function showed that the treatment group had a higher likelihood of making on-time payments compared to the control group. The effect size was positive (0.334), with a significant p-value of 0.000, indicating a statistically significant effect of the one-time reminder on timely payment behavior.
+ 
+Furthermore, the calculated 95% confidence interval for the effect size displayed a minimum increase of 0.286. The result showed that the effect is significantly different from zero, reinforcing the statistical significance of the findings. The simulation's statistical power, which reflects the probability of correctly rejecting the null hypothesis when it is false, was found to be high (99.6%). In other words, our study is very likely to detect a true effect. 
+
+```{r q1_scenario2_analysis,class.output='code-output'}
+# Analyze data for Research Question 1 (Treatment1 vs Control)
+results_q1_s2 <- analyze_experiment(dat2, Control, Treatment1)
+
+# Applying the analysis function to each experiment
+exp.results_t1_s2 <- sim.dat_t1_s2[, analyze.experiment(.SD), by = "Experiment"]
+
+# Calculating statistical power for Treatment1
+power_t1_s2 <- mean(exp.results_t1_s2$P_Value_Treatment1 < 0.05, na.rm = TRUE)
+
+# Calculating Effect Size Statistics for Treatment1
+summary_stats_t1_s2 <- exp.results_t1_s2[, .(
+  Min = min(Estimate_Treatment1, na.rm = TRUE),
+  '1st_Qu' = quantile(Estimate_Treatment1, probs = 0.25, na.rm = TRUE),
+  Median = median(Estimate_Treatment1, na.rm = TRUE),
+  Mean = mean(Estimate_Treatment1, na.rm = TRUE),
+  '3rd_Qu' = quantile(Estimate_Treatment1, probs = 0.75, na.rm = TRUE),
+  Max = max(Estimate_Treatment1, na.rm = TRUE)
+)]
+
+# Concatenate the statistics into a single string
+stats_table_t1_s2 <- data.table(Statistic = c('min','1st_Quartile','Median','3rd_Quartile','Mean','Max'), Value = c(summary_stats_t1_s2$Min, summary_stats_t1_s2$`1st_Qu`, summary_stats_t1_s2$Median, summary_stats_t1_s2$Mean, summary_stats_t1_s2$`3rd_Qu`, summary_stats_t1_s2$Max))
+
+# Calculating 95% confidence interval for the effect size of Treatment1
+mean_effect_size_t1_s2 <- mean(exp.results_t1_s2$Estimate_Treatment1, na.rm = TRUE)
+se_effect_size_t1_s2 <- sd(exp.results_t1_s2$Estimate_Treatment1, na.rm = TRUE) / sqrt(nrow(exp.results_t1_s2))
+ci_lower_one_sided_t1_s2 <- mean_effect_size_t1_s2 - qt(0.95, df = nrow(exp.results_t1_s2) - 1) * se_effect_size_t1_s2
+ci_95_one_sided_t1_s2 <- c(Lower = ci_lower_one_sided_t1_s2, Upper = Inf)
+
+# Update final results table
+results_table[2,3] <- signif(stats_table_t1_s2[5,2], digits=3) # Mean effect
+results_table[2,4] <- signif(ci_95_one_sided_t1_s2['Lower'], digits=3) # Confidence Interval
+results_table[2,5] <- Inf
+results_table[2,6] <- NA
+results_table[2,7] <- NA
+results_table[2,8] <- signif(exp.results_t1_s2[, mean(P_Value_Treatment1 > alpha)], digits = 3)*100 # False negative percentage
+results_table[2,9] <- signif(x=100-results_table[2,8], digits = 3) # True positive percentage
+results_table[2,]
+
+
+```
+
+## 11. Research Question 2 
+
+This section explores two scenarios: Scenario 1, which simulates the absence of any effect from a two-times reminder on credit card payment rates; and Scenario 2, assessing the presence of a significant effect.
+
+
+### 11.1 Scenario 1
+<p style="text-indent: 0;">
+**Cynthia Cynthia 50%, Ziyu An 50%**
+</p>
+<p style="text-indent: 0;">
+**Second Null Hypothesis**: Relative to default reminder, two times reminder before the due date will not increase full payment rate of credit card users (𝛍t2 = 𝛍c2).
+</p>
+
+<p style="text-indent: 0;">
+**Simulation**
+</p>
+```{r q2_scenario1_simulation,class.output='code-output'}
+# Research Q2 T2 with no effect
+# Set seed for reproducibility
+set.seed(329)
+
+# Define parameters
+prob_control <- 0.40
+prob_treatment2 <- 0.40
+
+# Appending treatment 2 outcome to dat1
+dat1[Group == Treatment2, Payment := rbinom(n = .N, size = 1, prob = prob_treatment2)]  
+
+# Set seed for reproducibility
+# Define parameters for simulation
+set.seed(329)
+B <- 1000
+
+# Creating the simulation data
+Experiment <- 1:B
+Group <- c(rep.int(Control, n/3), rep.int(Treatment2, n/3))
+sim.dat_t2_s1 <- as.data.table(expand.grid(Experiment = Experiment, Group = Group))
+setorderv(x = sim.dat_t2_s1, cols = c("Experiment", "Group"), order = c(1,1))
+
+# Assuming binary outcomes with specified probabilities
+sim.dat_t2_s1[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]
+sim.dat_t2_s1[Group == Treatment2, Payment := rbinom(n = .N, size = 1, prob = prob_treatment2)]
+
+# Function to perform logistic regression analysis for T2
+analyze.experiment <- function(the.dat) {
+  model <- glm(Payment ~ Group, family = binomial(link = "logit"), data = the.dat)
+  summary_model <- summary(model)
+  coef_treatment2 <- coef(summary_model)["GroupTreatment2", ]
+  
+  result <- data.table(
+    Estimate_Treatment2 = coef_treatment2["Estimate"],
+    P_Value_Treatment2 = ifelse(coef_treatment2["Estimate"] > 0, 
+                                coef_treatment2["Pr(>|z|)"] / 2, 
+                                1 - coef_treatment2["Pr(>|z|)"] / 2)
+  )
+  
+  return(result)
+}
+```
+<p style="text-indent: 0;">
+**Analysis**
+</p>
+In Scenario 2, we analyzed no effect of two time frequency reminder on payment rate. To simulate this effect, we expect a probability of treatment group 2 at 0.40, same as the probability of the control group. The regression indicates a lack of statistical significance in the difference between both groups, reflected in high p-value (i.e. 0.487) and negligible effect size (0.002). Additionally, the computed statistical power of the study was 0.052, close to the alpha threshold and denoted a limited capability of the study design in detecting a true effect, should one exist.
+
+The 95% one-sided confidence interval displayed a very small effect size of 0.001, further supporting the hypothesis of no substantial effect. High proportion of True Negatives (94.8%) and a False Positive rate of 5.2% are detected. These rates align with the expectations under the null hypothesis, corroborating the absence of a statistically significant effect of increased reminder frequency.
+
+```{r q2_scenario1_analysis,class.output='code-output'}
+# Analyze data for Research Question 2 (Treatment2 vs Control)
+results_q2_s1 <- analyze_experiment(dat1, Control, Treatment2)
+
+# Applying the analysis function to each experiment
+exp.results_t2_s1 <- sim.dat_t2_s1[, analyze.experiment(.SD), by = "Experiment"]
+
+# Calculating statistical power for Treatment2
+power_t2_s1 <- mean(exp.results_t2_s1$P_Value_Treatment2 < 0.05, na.rm = TRUE)
+
+# Calculating Effect Size Statistics for Treatment2
+summary_stats_t2_s1 <- exp.results_t2_s1[, .(
+  Min = min(Estimate_Treatment2, na.rm = TRUE),
+  '1st_Qu' = quantile(Estimate_Treatment2, probs = 0.25, na.rm = TRUE),
+  Median = median(Estimate_Treatment2, na.rm = TRUE),
+  Mean = mean(Estimate_Treatment2, na.rm = TRUE),
+  '3rd_Qu' = quantile(Estimate_Treatment2, probs = 0.75, na.rm = TRUE),
+  Max = max(Estimate_Treatment2, na.rm = TRUE)
+)]
+
+# Concatenate the statistics into a single string
+stats_table_t2_s1 <- data.table(Statistic = c('min','1st_Quartile','Median','3rd_Quartile','Mean','Max'), Value = c(summary_stats_t2_s1$Min, summary_stats_t2_s1$`1st_Qu`, summary_stats_t2_s1$Median, summary_stats_t2_s1$Mean, summary_stats_t2_s1$`3rd_Qu`, summary_stats_t2_s1$Max))
+
+# Calculating 95% confidence interval for the effect size of treatment2
+mean_effect_size_t2_s1 <- mean(exp.results_t2_s1$Estimate_Treatment2, na.rm = TRUE)
+se_effect_size_t2_s1 <- sd(exp.results_t2_s1$Estimate_Treatment2, na.rm = TRUE) / sqrt(nrow(exp.results_t2_s1))
+ci_lower_one_sided_t2_s1 <- mean_effect_size_t2_s1 - qt(0.95, df = nrow(exp.results_t2_s1) - 1) * se_effect_size_t2_s1
+ci_95_one_sided_t2_s1 <- c(Lower = ci_lower_one_sided_t2_s1, Upper = Inf)
+
+# Update final results table
+results_table[3,3] <- signif(stats_table_t2_s1[5,2], digits=3) # Mean effect
+results_table[3,4] <- signif(ci_95_one_sided_t2_s1['Lower'], digits=3) # Confidence Interval
+results_table[3,5] <- Inf
+results_table[3,6] <- signif(exp.results_t2_s1[, mean(P_Value_Treatment2 < alpha)], digits = 3)*100 # False Positive
+results_table[3,7] <- signif(x = 100 - results_table[3,6], digits = 3) # True negative percentage
+results_table[3,8] <- NA
+results_table[3,9] <- NA
+results_table[3,]
+
+```
+
+
+
+### 11.2 Scenario 2
+<p style="text-indent: 0;">
+**Cynthia 50%, Ziyu 50%**
+</p>
+<p style="text-indent: 0;">
+**Second Alternative Hypothesis**: Relative to default reminder, two times reminder before the due date will increase full payment rate of credit card users (𝛍t2 > 𝛍c2).
+</p>
+<p style="text-indent: 0;">
+**Simulation**
+</p>
+```{r q2_scenario2_simulation,class.output='code-output'}
+# Research Q2 T2 with effect
+# Set seed for reproducibility
+set.seed(329)
+
+# Define parameters
+prob_control <- 0.40
+prob_treatment2 <- 0.48
+
+# Appending Treatment 2 outcome to Dat2
+dat2[Group == Treatment2, Payment := rbinom(n = .N, size = 1, prob = prob_treatment2)] 
+
+
+# Set seed for reproducibility
+# Define parameters for simulation
+set.seed(329)
+B <- 1000
+
+# Creating the simulation data
+Experiment <- 1:B
+Group <- c(rep.int(Control, n/3), rep.int(Treatment2, n/3))
+sim.dat_t2_s2 <- as.data.table(expand.grid(Experiment = Experiment, Group = Group))
+setorderv(x = sim.dat_t2_s2, cols = c("Experiment", "Group"), order = c(1,1))
+
+# Assuming binary outcomes with specified probabilities
+sim.dat_t2_s2[Group == Control, Payment := rbinom(n = .N, size = 1, prob = prob_control)]
+sim.dat_t2_s2[Group == Treatment2, Payment := rbinom(n = .N, size = 1, prob = prob_treatment2)]
+
+# Function to perform logistic regression analysis for T1
+analyze.experiment <- function(the.dat) {
+  model <- glm(Payment ~ Group, family = binomial(link = "logit"), data = the.dat)
+  summary_model <- summary(model)
+  coef_treatment2 <- coef(summary_model)["GroupTreatment2", ]
+  
+  result <- data.table(
+    Estimate_Treatment2 = coef_treatment2["Estimate"],
+    P_Value_Treatment2 = ifelse(coef_treatment2["Estimate"] > 0, 
+                                coef_treatment2["Pr(>|z|)"] / 2, 
+                                1 - coef_treatment2["Pr(>|z|)"] / 2))
+  
+  return(result)
+}
+```
+<p style="text-indent: 0;">
+**Analysis**
+</p>
+In this scenario with actual effect of two-times frequency reminder on payment rate, we estimate a probability rate for treatment group 2 to be at 0.48. The preliminary analysis of this simulation produced a notable effect size of 0.374, accompanied by a p-value of 0.000. This result strongly suggests a statistically significant and meaningful effect of the treatment compared to the control group. Moreover, the statistical power calculated for this study stood at 0.999, corresponding to a strong predictive power in detecting true effect.
+
+The one-sided 95% confidence interval, ranging from a minimum effect size of 32.6% to infinity, reinforces the substantial nature of the treatment effect. In terms of outcome classification, the simulations demonstrated a True Positive rate of 99.9% and a False Negative rate of 0.1%. These results collectively underscore the effectiveness of the two-times frequency reminder in enhancing full payment rates among credit card users, as evidenced by the significant statistical findings and consistent simulation outcomes.
+
+
+```{r q2_scenario2_analysis,class.output='code-output'}
+# Analyze data for Research Question 2 (Treatment2 vs Control)
+results_q2_s2 <- analyze_experiment(dat2, Control, Treatment2)
+
+# Applying the analysis function to each experiment
+exp.results_t2_s2 <- sim.dat_t2_s2[, analyze.experiment(.SD), by = "Experiment"]
+
+# Calculating statistical power for Treatment2
+power_t2_s2 <- mean(exp.results_t2_s2$P_Value_Treatment2 < 0.05, na.rm = TRUE)
+
+# Calculating Effect Size Statistics for Treatment2
+summary_stats_t2_s2 <- exp.results_t2_s2[, .(
+  Min = min(Estimate_Treatment2, na.rm = TRUE),
+  '1st_Qu' = quantile(Estimate_Treatment2, probs = 0.25, na.rm = TRUE),
+  Median = median(Estimate_Treatment2, na.rm = TRUE),
+  Mean = mean(Estimate_Treatment2, na.rm = TRUE),
+  '3rd_Qu' = quantile(Estimate_Treatment2, probs = 0.75, na.rm = TRUE),
+  Max = max(Estimate_Treatment2, na.rm = TRUE)
+)]
+
+# Concatenate the statistics into a single string
+stats_table_t2_s2 <- data.table(Statistic = c('min','1st_Quartile','Median','3rd_Quartile','Mean','Max'), Value = c(summary_stats_t2_s2$Min, summary_stats_t2_s2$`1st_Qu`, summary_stats_t2_s2$Median, summary_stats_t2_s2$Mean, summary_stats_t2_s2$`3rd_Qu`, summary_stats_t2_s2$Max))
+
+# Calculating 95% confidence interval for the effect size of treatment2
+mean_effect_size_t2_s2 <- mean(exp.results_t2_s2$Estimate_Treatment2, na.rm = TRUE)
+se_effect_size_t2_s2 <- sd(exp.results_t2_s2$Estimate_Treatment2, na.rm = TRUE) / sqrt(nrow(exp.results_t2_s2))
+ci_lower_one_sided_t2_s2 <- mean_effect_size_t2_s2 - qt(0.95, df = nrow(exp.results_t2_s2) - 1) * se_effect_size_t2_s2
+ci_95_one_sided_t2_s2 <- c(Lower = ci_lower_one_sided_t2_s2, Upper = Inf)
+
+
+# Update final results table
+results_table[4,3] <- signif(stats_table_t2_s2[5,2], digits=3) # Mean effect
+results_table[4,4] <- signif(ci_95_one_sided_t2_s2['Lower'], digits=3) # Confidence Interval
+results_table[4,5] <- Inf
+results_table[4,6] <- NA
+results_table[4,7] <- NA
+results_table[4,8] <- signif(exp.results_t2_s2[, mean(P_Value_Treatment2 > alpha)], digits = 3)*100 # False negative percentage
+results_table[4,9] <- signif(x = 100 - results_table[4,8], digits = 3) # True positive percentage
+results_table[4,]
+
+```
+<p style="text-indent: 0;">
+## 12. Final Results For All Simulations
+</p>
+``` {r final_results,class.output='code-output'}
+
+# Viewing final results
+results_table
+
+```
+
+## 13. References 
+<p style="text-indent: 0;">
+**ZiYu An 20%, Yinheng Wang 20%, Zhiqing Wang 20%, Cynthia Cynthia 40%**
+</p>
+
+[Open HTML Document](file:///C:/Users/katew/Desktop/Examining%20the%20Effect%20of%20Reminders%20Frequency%20on%20Credit%20Card%20Payment%20Behavior.html){:target="_blank"}
